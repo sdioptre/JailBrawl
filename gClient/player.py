@@ -54,14 +54,17 @@ class Player(Character):
         self.y += self.yspeed
         self.xspeed += self.xaccel
         self.yspeed += self.yaccel
-        print(self.x)
+        #print(self.x)
         #self.yaccel -= 1
 
     def move_l(self):
-        self.xaccel = -5
+        self.xaccel = -1
 
     def move_r(self):
-        self.xaccel = 5
+        self.xaccel = 1
+
+    def stop(self):
+        self.xspeed = 0
 
     def jump(self):
         self.yaccel = 5
@@ -82,17 +85,17 @@ class Player(Character):
     #def update(self):
     #    self._walk()
     #use pygame input senses to change acceleration
-    def _control(self):
-        events = pygame.event.get()
-        for event in     events:
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_d:
-                    self.xaccel = -5
-                if event.key == pygame.K_a:
-                    self.xaccel = 5
-                if event.key == pygame.K_w:
-                    self.yaccel = 10
+    # def _control(self):
+    #     events = pygame.event.get()
+    #     for event in     events:
+    #         if event.type == pygame.KEYDOWN:
+    #             if event.key == pygame.K_d:
+    #                 self.xaccel = -5
+    #             if event.key == pygame.K_a:
+    #                 self.xaccel = 5
+    #             if event.key == pygame.K_w:
+    #                 self.yaccel = 10
 
     def update(self):
         self._move()
-        self._control()
+        #self._control()

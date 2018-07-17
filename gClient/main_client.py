@@ -1,6 +1,7 @@
 import os, sys, pygame
 from texture import Platform
 from player import Player
+#flags = FULLSCREEN | DOUBLEBUF
 
 class Client:
 
@@ -16,13 +17,9 @@ def main():
     pygame.init()
     running = True
     screen = pygame.display.set_mode((640, 480))
-    background = pygame.Surface(screen.get_size())
-    background = background.convert()
-    background.fill((0, 0, 250))
-    screen.blit(background, (0, 0))
     #pygame.display.flip()
     player = Player()
-    plat1 = Platform(320,100,player)
+    plat1 = Platform(100,100,player)
     allsprites = pygame.sprite.RenderPlain((player))
     clock = pygame.time.Clock()
     pygame.display.update()
@@ -36,17 +33,20 @@ def main():
             if move_ticker == 0:
                 move_ticker = 5
                 player.move_l()
-        if keys[pygame.K_d]:
+        elif keys[pygame.K_d]:
             if move_ticker == 0:
                 move_ticker = 5
                 player.move_r()
+        else:
+            player.stop()
         if move_ticker > 0:
             move_ticker -= 1
-        plat1.draw_rect(screen)
+        #plat1.draw_rect(screen)
+        screen.fill((0,0,0))
         plat1.update(screen)
         clock.tick(60)
-        screen.blit(background, (0, 0))
         allsprites.update()
         allsprites.draw(screen)
         pygame.display.update()
+        #print(clock.get_fps())
 main()

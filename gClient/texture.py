@@ -11,11 +11,10 @@ class Platform(pygame.sprite.Sprite):
     def getRectPos(self):
         return (self.x, self.y)
 
-    def draw_rect(self, screen):
-        pygame.draw.rect(screen, (255, 0, 0), [self.y, self.x, self.y+15, self.x+40], 0)
+    #def draw_rect(self, screen):
+    #    pygame.draw.rect(screen, (255, 0, 0), (self.x, self.y, 15,0))
     def update(self,screen):
         self.pxspeed, self.pyspeed = self.playname.get_speed()
         self.x += self.pxspeed
         self.y += self.pyspeed
-    #    print (self.x)
-        self.draw_rect(screen)
+        pygame.draw.rect(screen, (255, 0, 0), [self.x, self.y, 15,0])
