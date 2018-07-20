@@ -29,11 +29,11 @@ def main():
                  pygame.quit(); sys.exit();
         keys=pygame.key.get_pressed()
         move_ticker = 0
-        if keys[pygame.K_a]:
+        if keys[pygame.K_d]:
             if move_ticker == 0:
                 move_ticker = 5
                 player.move_l()
-        elif keys[pygame.K_d]:
+        elif keys[pygame.K_a]:
             if move_ticker == 0:
                 move_ticker = 5
                 player.move_r()

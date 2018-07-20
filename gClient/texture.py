@@ -17,4 +17,8 @@ class Platform(pygame.sprite.Sprite):
         self.pxspeed, self.pyspeed = self.playname.get_speed()
         self.x += self.pxspeed
         self.y += self.pyspeed
-        pygame.draw.rect(screen, (255, 0, 0), [self.x, self.y, 15,0])
+        if self.pxspeed >= 15:
+            self.pxspeed = 15
+        if self.pxspeed <=-15:
+            self.pxspeed =-15
+        pygame.draw.rect(screen, (255, 0, 0), [self.x, self.y, 360,30])
